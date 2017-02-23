@@ -95,15 +95,12 @@ document.getElementById('login').addEventListener('click', function() {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
         success: function (data) {
-            t.set('board', 'shared', 'blueprint_token', data.Token);
-            t.set('board', 'shared', 'blueprint_token_expiration', data.TokenExpirationTime);
-            t.set('board', 'shared', 'blueprint_user_id', data.UserId);
-            t.set('board', 'shared', 'blueprint_user_license', data.UserLicense);
-            t.set('board', 'shared', 'blueprint_user_username', data.UserName);
-            t.set('board', 'shared', 'blueprint_user_displayname', data.UserDisplayName);
-            alert("Welcome, " + data.UserDisplayName + "!");
-
-            t.closeOverlay().done();
+            return t.set('board', 'shared', 'blueprint_token', data.Token).then(function () {
+                return t.set('board', 'shared', 'blueprint_user_displayname', data.UserDisplayName).then(function () {
+                    alert("Welcome, " + data.UserDisplayName + "!");
+                    t.closeOverlay().done();
+                });
+            });
         },
         fail: function () {
             alert("Login failed");

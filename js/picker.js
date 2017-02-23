@@ -9,9 +9,12 @@ if(server.substr(server.length - 1, 1) !== "/") {
 var token = t.arg('token');
 
 var picker = document.getElementById('picker');
+var select = document.getElementById('select');
+
 var errmsg = document.getElementById('errmsg');
 if (typeof token !== "string" || token == "") {
     picker.style.display = "none";
+    select.style.display = "none";
     errmsg.style.display = "block";
     errmsg.textContent = "Please login before trying to select a project"
 }
