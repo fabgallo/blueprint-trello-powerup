@@ -9,8 +9,6 @@ if(server && server.substr(server.length - 1, 1) !== "/") {
 var token = t.arg('token');
 var board = t.arg('board');
 
-t.board('id', 'name', 'url').then(function(promiseResult){console.log(promiseResult)});
-
 var picker = document.getElementById('picker');
 var select = document.getElementById('select');
 

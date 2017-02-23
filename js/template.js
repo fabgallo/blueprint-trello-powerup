@@ -101,7 +101,8 @@ var boardButtonCallback = function(t) {
                         url: './picker.html',
                         args: {
                             server: server,
-                            token: token
+                            token: token,
+                            board: board
                         }
                     })
                 })
