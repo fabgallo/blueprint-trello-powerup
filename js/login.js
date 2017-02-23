@@ -70,8 +70,8 @@ function make_base_auth(user, password) {
 }
 
 document.getElementById('login').addEventListener('click', function() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+    //var username = document.getElementById("username").value;
+    //var password = document.getElementById("password").value;
     //password = encode(password);
 
     $.ajax
@@ -80,10 +80,13 @@ document.getElementById('login').addEventListener('click', function() {
         url: "https://crossorigin.me/" + server + "authentication/v1/loginEx",
         dataType: 'json',
         async: false,
-        data: '{}',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+        xhrFields: {
+            withCredentials: true
         },
+        //data: '{}',
+        //beforeSend: function (xhr) {
+        //    xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+        //},
         success: function (data) {
             console.log(data);
         }
