@@ -86,15 +86,15 @@ document.getElementById('login').addEventListener('click', function() {
         url: server + "authentication/v1/loginEx",
         dataType: 'json',
         async: true,
-        // xhrFields: {
-        //     withCredentials: true
-        // },
+        xhrFields: {
+            withCredentials: true
+        },
         // username: username,
         // password: password,
         // data: '{}',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', make_base_auth(username, password));
-        },
+        // beforeSend: function (xhr) {
+        //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+        // },
         success: function (data) {
             return t.set('board', 'shared', 'blueprint_token', data.Token).then(function () {
                 return t.set('board', 'shared', 'blueprint_user_displayname', data.UserDisplayName).then(function () {
