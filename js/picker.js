@@ -7,6 +7,7 @@ if(server.substr(server.length - 1, 1) !== "/") {
     server += "/";
 }
 var token = t.arg('token');
+var board = t.arg('board');
 
 var picker = document.getElementById('picker');
 var select = document.getElementById('select');
