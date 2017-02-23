@@ -2,6 +2,7 @@
 
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
+var LOCK_ICON = './images/lock.svg';
 
 var parkMap = {
   acad: 'Acadia National Park',
@@ -81,14 +82,14 @@ var formatNPSUrl = function(t, url){
 
 var boardButtonCallback = function(t){
   return t.popup({
-    title: 'Popup List Example',
+    title: 'Blueprint Integration',
     items: [
       {
-        text: 'Open Overlay',
+        text: 'Login',
         callback: function(t){
           return t.overlay({
-            url: './overlay.html',
-            args: { rand: (Math.random() * 100).toFixed(0) }
+            url: './login.html',
+            args: { server: t.get('board', 'shared', 'server') }
           })
           .then(function(){
             return t.closePopup();
@@ -96,7 +97,7 @@ var boardButtonCallback = function(t){
         }
       },
       {
-        text: 'Open Board Bar',
+        text: 'Help',
         callback: function(t){
           return t.boardBar({
             url: './board-bar.html',
@@ -192,7 +193,7 @@ TrelloPowerUp.initialize({
   'board-buttons': function(t, options){
     return [{
       icon: WHITE_ICON,
-      text: 'Template',
+      text: 'Blueprint Integration',
       callback: boardButtonCallback
     }];
   },
