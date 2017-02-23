@@ -85,10 +85,10 @@ document.getElementById('login').addEventListener('click', function() {
         type: "GET",
         url: server + "authentication/v1/loginEx",
         dataType: 'json',
-        async: false,
-        xhrFields: {
-            withCredentials: true
-        },
+        async: true,
+        // xhrFields: {
+        //     withCredentials: true
+        // },
         username: username,
         password: password,
         // data: '{}',
