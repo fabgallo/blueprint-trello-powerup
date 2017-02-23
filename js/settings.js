@@ -3,20 +3,15 @@
 var Promise = TrelloPowerUp.Promise;
 var t = TrelloPowerUp.iframe();
 
-var fruitSelector = document.getElementById('fruit');
-var vegetableSelector = document.getElementById('vegetable');
+var blueprintServer = document.getElementById('server');
 
 t.render(function(){
   return Promise.all([
-    t.get('board', 'shared', 'fruit'),
-    t.get('board', 'private', 'vegetable')
+    t.get('board', 'shared', 'server')
   ])
-  .spread(function(savedFruit, savedVegetable){
-    if(savedFruit && /[a-z]+/.test(savedFruit)){
-      fruitSelector.value = savedFruit;
-    }
-    if(savedVegetable && /[a-z]+/.test(savedVegetable)){
-      vegetableSelector.value = savedVegetable;
+  .spread(function(savedServer) {
+    if(savedServer && /^https?\/\/([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,6}(\/)?/.test(savedServer)) {
+        blueprintServer.value = savedServer;
     }
   })
   .then(function(){
@@ -25,12 +20,9 @@ t.render(function(){
   })
 });
 
-document.getElementById('save').addEventListener('click', function(){
-  return t.set('board', 'private', 'vegetable', vegetableSelector.value)
-  .then(function(){
-    return t.set('board', 'shared', 'fruit', fruitSelector.value);
-  })
-  .then(function(){
-    t.closePopup();
-  })
-})
+document.getElementById('save').addEventListener('click', function() {
+    return t.set('board', 'shared', 'server', blueprintServer.value)
+        .then(function() {
+            t.closePopup();
+        })
+});

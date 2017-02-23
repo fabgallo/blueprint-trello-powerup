@@ -1,11 +1,11 @@
 {
-  "name": "Static Template",
+  "name": "Blueprint Integration",
   "description": "",
-  "details": "A static sample Power-Up hosted on GitHub pages. Feel free to fork [this repository](https://github.com/trello/power-up-template) as a starting point for your own Power-Up.",
+  "details": "Hackday Blueprint Trello Powerup",
   "icon": {
     "url": "./images/logo.png"
   },
-  "author": "Trello Inc",
+  "author": "Blueprint Software Systems",
   "capabilities": [
     "attachment-sections",
     "attachment-thumbnail",
