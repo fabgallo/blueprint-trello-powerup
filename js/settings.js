@@ -10,7 +10,7 @@ t.render(function(){
     t.get('board', 'shared', 'server')
   ])
   .spread(function(savedServer) {
-    if(savedServer && /^https?\/\/([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,6}(\/)?/.test(savedServer)) {
+    if(savedServer && /^https?:\/\/([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,6}(\/)?/.test(savedServer)) {
         blueprintServer.value = savedServer;
     }
   })
@@ -21,6 +21,8 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function() {
+    // add validatation of server URL
+
     return t.set('board', 'shared', 'server', blueprintServer.value)
         .then(function() {
             t.closePopup();
