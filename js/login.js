@@ -91,7 +91,7 @@ document.getElementById('login').addEventListener('click', function() {
         // },
         success: function (data) {
             var token = data.Token;
-            var displayName = data.userDisplayName;
+            var displayName = data.UserDisplayName;
 
             t.set('board', 'private', 'blueprint_token', token);
             alert("Welcome, " + displayName + "!");
