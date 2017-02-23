@@ -77,7 +77,7 @@ var boardButtonCallback = function(t) {
             text: 'Login',
             callback: function(t){
                 return Promise.all([
-                    t.get('board', 'shared', 'server')
+                    t.get('organization', 'shared', 'server')
                 ]).spread(function(server) {
                     t.overlay({
                         url: './login.html',
@@ -93,8 +93,8 @@ var boardButtonCallback = function(t) {
             text: 'Select a project',
             callback: function(t){
                 return Promise.all([
-                    t.get('board', 'shared', 'server'),
-                    t.get('board', 'shared', 'blueprint_token')
+                    t.get('organization', 'shared', 'server'),
+                    t.get('organization', 'private', 'blueprint_token')
                 ]).spread(function(server, token) {
                     t.overlay({
                         url: './picker.html',

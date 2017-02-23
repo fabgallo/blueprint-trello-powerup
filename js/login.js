@@ -71,7 +71,7 @@ function make_base_auth(user, password) {
 }
 
 document.getElementById('logout').addEventListener('click', function() {
-    t.set('board', 'private', 'blueprint_token', "");
+    t.set('organization', 'private', 'blueprint_token', "");
     alert("Token deleted. Please login again");
 });
 
@@ -96,8 +96,8 @@ document.getElementById('login').addEventListener('click', function() {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
         success: function (data) {
-            return t.set('board', 'shared', 'blueprint_token', data.Token).then(function () {
-                return t.set('board', 'shared', 'blueprint_user_displayname', data.UserDisplayName).then(function () {
+            return t.set('organization', 'private', 'blueprint_token', data.Token).then(function () {
+                return t.set('organization', 'private', 'blueprint_user_displayname', data.UserDisplayName).then(function () {
                     alert("Welcome, " + data.UserDisplayName + "!");
                     t.closeOverlay().done();
                 });
