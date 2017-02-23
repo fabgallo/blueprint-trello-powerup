@@ -82,17 +82,16 @@ document.getElementById('login').addEventListener('click', function() {
 
     $.ajax
     ({
-        type: "POST",
-        url: server + "svc/adminstore/sessions/?force=true&login=" + encode(username),
-        //url: server + "authentication/v1/loginEx",
+        type: "GET",
+        url: server + "authentication/v1/loginEx",
         dataType: 'json',
         async: true,
-        // xhrFields: {
-        //     withCredentials: true
-        // },
+        xhrFields: {
+            withCredentials: true
+        },
         // username: username,
         // password: password,
-        data: encode(password),
+        // data: '{}',
         // beforeSend: function (xhr) {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
