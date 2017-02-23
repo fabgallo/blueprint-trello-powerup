@@ -90,7 +90,13 @@ document.getElementById('login').addEventListener('click', function() {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
         success: function (data) {
-            console.log(data);
+            var token = data.Token;
+            var displayName = data.userDisplayName;
+
+            t.set('board', 'private', 'blueprint_token', token);
+            alert("Welcome, " + displayName + "!");
+
+            t.closePopup();
         }
     });
 });
