@@ -96,7 +96,7 @@ document.getElementById('login').addEventListener('click', function() {
             t.set('board', 'private', 'blueprint_token', token);
             alert("Welcome, " + displayName + "!");
 
-            t.closePopup();
+            t.closeOverlay().done();
         }
     });
 });
