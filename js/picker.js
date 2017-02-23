@@ -3,7 +3,7 @@
 var t = TrelloPowerUp.iframe();
 
 var server = t.arg('server');
-if(server.substr(server.length - 1, 1) !== "/") {
+if(server && server.substr(server.length - 1, 1) !== "/") {
     server += "/";
 }
 var token = t.arg('token');
