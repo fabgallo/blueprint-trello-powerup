@@ -5,13 +5,13 @@ var t = TrelloPowerUp.iframe();
 
 var blueprintServer = document.getElementById('server');
 
-t.render(function(){
+t.render(function() {
   return Promise.all([
     t.get('board', 'shared', 'server')
   ])
-  .spread(function(savedServer) {
-    if(savedServer && /^https?:\/\/([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,6}(\/)?/.test(savedServer)) {
-        blueprintServer.value = savedServer;
+  .spread(function(server) {
+    if(server && /^https?:\/\/([a-z0-9-]+\.)?[a-z0-9-]+\.[a-z]{2,6}(\/)?/.test(server)) {
+        blueprintServer.value = server;
     }
   })
   .then(function(){
@@ -21,7 +21,7 @@ t.render(function(){
 });
 
 document.getElementById('save').addEventListener('click', function() {
-    // add validatation of server URL
+    //TODO: add validatation of server URL
 
     return t.set('board', 'shared', 'server', blueprintServer.value)
         .then(function() {

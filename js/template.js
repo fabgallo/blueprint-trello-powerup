@@ -1,5 +1,7 @@
 /* global TrelloPowerUp */
 
+var Promise = TrelloPowerUp.Promise;
+
 var WHITE_ICON = './images/icon-white.svg';
 var GRAY_ICON = './images/icon-gray.svg';
 var LOCK_ICON = './images/lock.svg';
@@ -80,20 +82,24 @@ var formatNPSUrl = function(t, url){
   }
 };
 
-var boardButtonCallback = function(t){
+var boardButtonCallback = function(t) {
   return t.popup({
     title: 'Blueprint Integration',
     items: [
-      {
-        text: 'Login',
-        callback: function(t){
-          return t.overlay({
-            url: './login.html',
-            args: { server: t.get('board', 'shared', 'server') }
-          })
-          .then(function(){
-            return t.closePopup();
-          });
+        {
+            text: 'Login',
+            callback: function(t){
+                return Promise.all([
+                    t.get('board', 'shared', 'server')
+                ]).spread(function(server) {
+                    t.overlay({
+                        url: './login.html',
+                        args: { server: server }
+                    })
+                })
+                .then(function() {
+                    return t.closePopup();
+                });
         }
       },
       {
@@ -192,7 +198,7 @@ TrelloPowerUp.initialize({
   },
   'board-buttons': function(t, options){
     return [{
-      icon: WHITE_ICON,
+      icon: LOCK_ICON,
       text: 'Blueprint Integration',
       callback: boardButtonCallback
     }];
