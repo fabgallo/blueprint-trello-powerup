@@ -20,6 +20,8 @@ if (typeof token !== "string" || token == "") {
 }
 
 document.getElementById('select').addEventListener('click', function() {
+
+    t.closeOverlay().done();
 });
 
 t.render(function(){
@@ -32,15 +34,20 @@ t.render(function(){
         type: "GET",
         url: server + "api/v1/projects?api_key=" + token,
         dataType: 'json',
-        async: false,
+        async: true,
         //data: '{}',
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', "BlueprintToken " + token);
         },
         success: function (data) {
-            console.log(data);
-
-            t.closeOverlay().done();
+            if (data.length) {
+                for (var i in data) {
+                    var option = document.createElement("option");
+                    option.text = data[i].Name;
+                    option.value = data[i].Id;
+                    picker.add(option);
+                }
+            }
         },
         error: function () {
             alert("Failed to retrieve projects");
