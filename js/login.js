@@ -77,7 +77,7 @@ document.getElementById('login').addEventListener('click', function() {
     $.ajax
     ({
         type: "GET",
-        url: "https://crossorigin.me/" + server + "authentication/v1/loginEx",
+        url: server + "authentication/v1/loginEx",
         dataType: 'json',
         async: false,
         xhrFields: {
