@@ -34,9 +34,9 @@ t.render(function(){
         dataType: 'json',
         async: false,
         //data: '{}',
-        // beforeSend: function (xhr) {
-        //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
-        // },
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', "BlueprintToken " + token);
+        },
         success: function (data) {
             console.log(data);
 
