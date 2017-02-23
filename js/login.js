@@ -84,9 +84,9 @@ document.getElementById('login').addEventListener('click', function() {
             withCredentials: true
         },
         //data: '{}',
-        //beforeSend: function (xhr) {
-        //    xhr.setRequestHeader('Authorization', make_base_auth(username, password));
-        //},
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+        },
         success: function (data) {
             console.log(data);
         }
