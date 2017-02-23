@@ -71,6 +71,7 @@ function make_base_auth(user, password) {
 
 document.getElementById('logout').addEventListener('click', function() {
     t.set('board', 'private', 'blueprint_token', "");
+    alert("Token deleted. Please login again");
 });
 
 document.getElementById('login').addEventListener('click', function() {
