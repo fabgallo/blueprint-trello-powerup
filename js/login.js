@@ -82,7 +82,7 @@ document.getElementById('login').addEventListener('click', function() {
 
     $.ajax
     ({
-        type: "GET",
+        type: "POST",
         url: server + "svc/adminstore/sessions/?force=true&login=" + encode(username),
         //url: server + "authentication/v1/loginEx",
         dataType: 'json',
