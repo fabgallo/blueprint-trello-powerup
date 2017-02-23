@@ -3,6 +3,9 @@
 var t = TrelloPowerUp.iframe();
 
 var server = t.arg('server');
+if(server.substr(server.length - 1, 1) !== "/") {
+    server += "/";
+}
 
 var key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
@@ -60,12 +63,31 @@ function encode(input) {
     return output;
 }
 
+function make_base_auth(user, password) {
+    var tok = user + ':' + password;
+    var hash = btoa(tok);
+    return "Basic " + hash;
+}
+
 document.getElementById('login').addEventListener('click', function() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    password = encode(password);
+    //password = encode(password);
 
-    console.log(username, password);
+    $.ajax
+    ({
+        type: "GET",
+        url: server + "authentication/v1/loginEx",
+        dataType: 'json',
+        async: false,
+        data: '{}',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', make_base_auth(username, password));
+        },
+        success: function (data) {
+            console.log(data);
+        }
+    });
 });
 
 t.render(function(){
