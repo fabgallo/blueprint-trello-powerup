@@ -13,7 +13,7 @@ var errmsg = document.getElementById('errmsg');
 if (typeof token !== "string" || token == "") {
     picker.style.display = "none";
     errmsg.style.display = "block";
-    err.textContent = "Please login before trying to select a project"
+    errmsg.textContent = "Please login before trying to select a project"
 }
 
 document.getElementById('select').addEventListener('click', function() {

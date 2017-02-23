@@ -95,12 +95,12 @@ document.getElementById('login').addEventListener('click', function() {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
         success: function (data) {
-            t.set('board', 'private', 'blueprint_token', data.Token);
-            t.set('board', 'private', 'blueprint_token_expiration', data.TokenExpirationTime);
-            t.set('board', 'private', 'blueprint_user_id', data.UserId);
-            t.set('board', 'private', 'blueprint_user_license', data.UserLicense);
-            t.set('board', 'private', 'blueprint_user_username', data.UserName);
-            t.set('board', 'private', 'blueprint_user_displayname', data.UserDisplayName);
+            t.set('board', 'shared', 'blueprint_token', data.Token);
+            t.set('board', 'shared', 'blueprint_token_expiration', data.TokenExpirationTime);
+            t.set('board', 'shared', 'blueprint_user_id', data.UserId);
+            t.set('board', 'shared', 'blueprint_user_license', data.UserLicense);
+            t.set('board', 'shared', 'blueprint_user_username', data.UserName);
+            t.set('board', 'shared', 'blueprint_user_displayname', data.UserDisplayName);
             alert("Welcome, " + data.UserDisplayName + "!");
 
             t.closeOverlay().done();

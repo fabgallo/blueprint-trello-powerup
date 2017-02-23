@@ -94,7 +94,7 @@ var boardButtonCallback = function(t) {
             callback: function(t){
                 return Promise.all([
                     t.get('board', 'shared', 'server'),
-                    t.get('board', 'private', 'blueprint_token')
+                    t.get('board', 'shared', 'blueprint_token')
                 ]).spread(function(server, token) {
                     t.overlay({
                         url: './picker.html',
