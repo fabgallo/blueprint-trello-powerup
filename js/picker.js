@@ -42,7 +42,7 @@ t.render(function(){
 
             t.closeOverlay().done();
         },
-        fail: function () {
+        error: function () {
             alert("Failed to retrieve projects");
         }
     });
