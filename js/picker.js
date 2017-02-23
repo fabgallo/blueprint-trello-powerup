@@ -17,10 +17,13 @@ if (typeof token !== "string" || token == "") {
 }
 
 document.getElementById('select').addEventListener('click', function() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    //password = encode(password);
+});
 
+t.render(function(){
+  // this function we be called once on initial load
+  // and then called each time something changes that
+  // you might want to react to, such as new data being
+  // stored with t.set()
     $.ajax
     ({
         type: "GET",
@@ -40,14 +43,6 @@ document.getElementById('select').addEventListener('click', function() {
             alert("Failed to retrieve projects");
         }
     });
-});
-
-t.render(function(){
-  // this function we be called once on initial load
-  // and then called each time something changes that
-  // you might want to react to, such as new data being
-  // stored with t.set()
-    document.getElementById('server').textContent = server;
 });
 
 // close overlay if user clicks outside our content
