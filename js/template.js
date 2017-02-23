@@ -89,6 +89,26 @@ var boardButtonCallback = function(t) {
                 });
         }
       },
+        {
+            text: 'Select a project',
+            callback: function(t){
+                return Promise.all([
+                    t.get('board', 'shared', 'server'),
+                    t.get('board', 'private', 'blueprint_token')
+                ]).spread(function(server, token) {
+                    t.overlay({
+                        url: './picker.html',
+                        args: {
+                            server: server,
+                            token: token
+                        }
+                    })
+                })
+                .then(function() {
+                    return t.closePopup();
+                });
+        }
+      },
       {
         text: 'Help',
         callback: function(t){
