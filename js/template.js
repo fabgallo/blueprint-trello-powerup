@@ -84,11 +84,11 @@ var boardButtonCallback = function(t) {
                         args: { server: server }
                     })
                 })
-                .then(function() {
-                    return t.closePopup();
-                });
-        }
-      },
+                    .then(function() {
+                        return t.closePopup();
+                    });
+            }
+        },
         {
             text: 'Select a project',
             callback: function(t){
@@ -104,23 +104,23 @@ var boardButtonCallback = function(t) {
                         }
                     })
                 })
-                .then(function() {
-                    return t.closePopup();
-                });
+                    .then(function() {
+                        return t.closePopup();
+                    });
+            }
+        },
+        {
+            text: 'Help',
+            callback: function(t){
+                return t.boardBar({
+                    url: './board-bar.html',
+                    height: 200
+                })
+                    .then(function(){
+                        return t.closePopup();
+                    });
+            }
         }
-      },
-      {
-        text: 'Help',
-        callback: function(t){
-          return t.boardBar({
-            url: './board-bar.html',
-            height: 200
-          })
-          .then(function(){
-            return t.closePopup();
-          });
-        }
-      }
     ]
   });
 };

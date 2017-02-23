@@ -24,31 +24,20 @@ document.getElementById('select').addEventListener('click', function() {
     $.ajax
     ({
         type: "GET",
-        url: server + "authentication/v1/loginEx",
+        url: server + "api/v1/projects?api_key=" + token,
         dataType: 'json',
         async: false,
-        xhrFields: {
-            withCredentials: true
-        },
-        username: username,
-        password: password,
         //data: '{}',
         // beforeSend: function (xhr) {
         //     xhr.setRequestHeader('Authorization', make_base_auth(username, password));
         // },
         success: function (data) {
-            t.set('board', 'private', 'blueprint_token', data.Token);
-            t.set('board', 'private', 'blueprint_token_expiration', data.TokenExpirationTime);
-            t.set('board', 'private', 'blueprint_user_id', data.UserId);
-            t.set('board', 'private', 'blueprint_user_license', data.UserLicense);
-            t.set('board', 'private', 'blueprint_user_username', data.UserName);
-            t.set('board', 'private', 'blueprint_user_displayname', data.UserDisplayName);
-            alert("Welcome, " + data.UserDisplayName + "!");
+            console.log(data);
 
             t.closeOverlay().done();
         },
         fail: function () {
-            alert("login failed");
+            alert("Failed to retrieve projects");
         }
     });
 });

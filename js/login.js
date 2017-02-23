@@ -69,6 +69,10 @@ function make_base_auth(user, password) {
     return "Basic " + hash;
 }
 
+document.getElementById('logout').addEventListener('click', function() {
+    t.set('board', 'private', 'blueprint_token', "");
+});
+
 document.getElementById('login').addEventListener('click', function() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
@@ -101,7 +105,7 @@ document.getElementById('login').addEventListener('click', function() {
             t.closeOverlay().done();
         },
         fail: function () {
-            alert("login failed");
+            alert("Login failed");
         }
     });
 });
